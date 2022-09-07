@@ -1,0 +1,63 @@
+a) Write a function to return the product of all the numerical atoms from a list, at superficial level.
+
+product(l1l2...ln) = {  1, if the list is empty;
+		l1 * product(l2...ln), if l1 is a numerical atom;
+		product(l2...ln), otherwise.
+	                 }
+
+
+b) Write a function to replace the first occurence of an element E in a given list with an other element O.
+
+replace_elem(l1l2...ln, e, o) = { [], if the list is empty;
+		                  o U l2...ln, if l1 = e;
+		                  l1 U replace_elem(l2...ln, e, o), if l1 != e;
+		               }
+
+c) Write a function to compute the result of an arithmetic expression memorised in preorder on a stack. Examples:
+ (+ 1 3) ==> 4 (1 + 3)
+ (+ * 2 4 3) ==> 11 ((2 * 4) + 3)
+ (+ * 2 4 - 5 * 2 2) ==> 9 ((2 * 4) + (5 - (2 * 2))
+
+- + 1 3 * 5 2
+- 4 U compute(* 5 2)
+
+
+make_operation(op, n1, n2) = { n1 + n2, if op = + ;
+			n1 - n2, if op = -   ;
+			n1 * n2, if op = *  ;
+			n1 / n2, if op = /  .
+		                }
+
+compute_one(l1l2...ln) = { 0, if the list is empty;
+		         make_operation(l1, l2, l3) U compute_one(l4...ln), if l1 is operator and l2 is number and l3 is number;
+		         l1 U compute_one(l2...ln), otherwise.
+	                         }
+
+compute_all(l1l2...ln) = { l1, if l = [l1];
+		        compute_all(compute_one(l1l2...ln)), otherwise.
+		     }
+
+d)) Write a function to produce the list of pairs (atom n), where atom appears for n times in the
+parameter list. Example:
+ (A B A B A C A) --> ((A 4) (B 2) (C 1))
+
+
+count_app(l1l2...ln, e) = { 0, if the list is empty;
+		         1 + count_app(l2...ln, e), if l1 = e;
+		         count_app(l1, e) + count_app(l2...ln, e), if l1 is a list;
+		         count_app(l2...ln, e), otherwise. 
+	                         }
+
+remove_elem(l1l2...ln, e) = { [], if the list is empty;
+		              remove_elem(l2...ln, e), if l1 = e;
+		              remove_elem(l1, e) U remove_elem(l2...ln, e), if l1 is a list;
+		              l1 U remove_elem(l2...ln, e), otherwise.
+		           }
+
+main(l1...ln) = { [], if the list is empty;
+	          (l1, count_app(l1l2...ln, l1)) U main(remove_elem(l1l2...ln, l1)), otherwise.
+	        }
+
+
+
+        

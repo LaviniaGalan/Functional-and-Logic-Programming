@@ -1,0 +1,13 @@
+;(A 2 B 0 C 2 D 0 E 0) (1)
+;(A (B) (C (D) (E))) (2)
+
+;4. Convert a tree of type (2) to type (1).
+
+
+count_subtrees(l1 l2 l3) = {        0, if the list is empty;
+		    	2, if l2 != [] and l3 != [];
+		    	1, if l2 != [] or l3 != [];
+		    	0, otherwise. }
+
+convert(l1 l2 l3) = { [], if the list is empty;
+	                 l1 U count_subtrees(l) U convert (l2) U convert (l3).}	    

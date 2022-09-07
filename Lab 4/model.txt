@@ -1,0 +1,12 @@
+is_valid(L) = { false, if L is empty or L has only one element,
+	        true, otherwise}
+
+generate_sublist(l1l2...ln) = {1. generate_sublist(l2...ln),
+		              2. sublist_start_with_first(l1l2...ln), if it is valid [i.e. is_valid(sublist_start_with_first(l1l2...ln)) = true]. }
+
+sublist_start_with_first(l1l2...ln) = { 1. [ ],
+		            	         2. l1 if l1 >= l2
+			         3. l1 U sublist_start_with_first(l2...ln), if l1 < l2.
+
+
+main(L) = U generate_sublist(L)

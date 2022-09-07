@@ -1,0 +1,8 @@
+10. Define a function that replaces one node with another one in a n-tree represented as: 
+(root list_of_nodes_subtree1... list_of_nodes_subtreen)
+Eg: tree is (a (b (c)) (d) (e (f))) and node 'b' will be replace with node 'g' => tree (a (g (c)) (d) (e (f)))
+
+replace_node(n, old, new) = { new, if n = old;
+		                old, if n = new;
+		                n, if n is an atom;
+		                (U i = 1...n) replace_node(n_i, old, new), otherwise (n is a list). }

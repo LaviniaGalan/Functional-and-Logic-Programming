@@ -1,0 +1,17 @@
+a)
+is_prime(x) = { false, if x <2,
+	    true, if x = 2,
+	    is_prime_rec(x, 2), otherwise. }
+
+is_prime_rec(x,d) = { false, if x%d = 0,
+ 		  is_prime_rec(x, d+1) if d <=x/2,
+		  true, if d > x/2. }
+
+dublate_primes(l1...ln) = { [], if l is empty,
+		          {l1, l1} U dublate_primes(l2...ln), if l1 is prime,
+		          l1 U dublate_primes(l2...ln), if l1 is not prime. }
+
+b)
+dublate_primes_het(l1...ln) = { [], if l is empty,
+			l1 U dublate_primes_het(l2...ln), if l1 is not a list,
+			dublate_primes(l1) U dublate_primes_het(l2...ln), if l1 is a list.}

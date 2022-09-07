@@ -1,0 +1,15 @@
+1.a.
+gcd_Rec(a, b) = a, if b==0;
+	          gcd(b, a%b), otherwise.
+
+lcm_Rec(l1l2...ln) = o, if the list is empty,
+                                     l1, if len(l)==1,
+	                  l1*lcm(l2...ln)/gcd(l1,lcm(l2...ln)), otherwise.
+
+1.b.
+insert_Rec(l1l2...ln, v, m, i) = 0, if list is empty
+		               (l1,v), if n==1 and i == m
+		               v U insert_Rec(l2...ln, v, m*2, i), if i == m+1
+		               l1 U insert_Rec(l2...ln, v, m, i+1), otherwise.
+
+insert(l1...ln, v) = insert_Rec(l1...ln, v, 1, 1)
